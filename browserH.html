@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styleBrowser.css">
+    <title>Browser Info</title>
+</head>
+<body>
+    <section class="bg"></section>
+    <selction class="info">
+        <div class ="navigator">
+            <h1><stong>Navigator</stong></h1>
+            <h3>appName</h3>
+            <p id = "an"></p>
+            <script>
+                document.getElementById("an").innerHTML =
+                navigator.appName;
+            </script>
+            <h3>product</h3>
+            <p id = "p"></p>
+            <script>
+                document.getElementById("p").innerHTML =
+                navigator.product;
+            </script>
+            <h3>appVersion</h3>
+            <p id = "av">app version</p>
+            <script>
+                document.getElementById("av").innerHTML =
+                navigator.appVersion;
+            </script>
+            <h3>userAgent</h3>
+            <p id = "ua"></p>
+            <script>
+                document.getElementById("ua").innerHTML =
+                navigator.userAgent;
+            </script>
+            <h3>platForm</h3>
+            <p id = "pf"></p>
+            <script>
+                document.getElementById("pf").innerHTML =
+                navigator.platform;
+            </script>
+
+            <h3>language</h3>
+            <p id = "l">language</p>
+            <script>
+                document.getElementById("l").innerHTML =
+                navigator.language;
+            </script>
+
+        </div>
+        <div class ="window">
+            <h1><strong>window</strong></h1>
+            <h3>innerWidth</h3>
+            <p id= "iw"></p>
+            <script>
+                document.getElementById("iw").innerHTML =
+                window.innerWidth;
+            </script>
+            <h3>innerHeight</h3>
+            <p id= "ih"></p>
+            <script>
+                document.getElementById("ih").innerHTML =
+                window.innerHeight;
+            </script>
+        </div> 
+        <div class ="screen">
+            <h1><strong>screen</strong></h1>
+            <h3>width</h3>
+            <p id = "w"></p>
+            <script>
+                document.getElementById("w").innerHTML =
+                screen.width;
+            </script>
+
+            <h3>height</h3>
+            <p id = "h"></p>
+            <script>
+                document.getElementById("h").innerHTML =
+                screen.height;
+            </script>
+
+            <h3>availWidth</h3>
+            <p id = "aw"></p>
+            <script>
+                document.getElementById("aw").innerHTML =
+                screen.availWidth;
+            </script>
+
+            <h3>availHeight</h3>
+            <p id = "ah"></p>
+            <script>
+                document.getElementById("ah").innerHTML =
+                screen.availHeight;
+            </script>
+            <h3>colorDepth</h3>
+            <p id = "cd"></p>
+            <script>
+                document.getElementById("cd").innerHTML =
+                screen.colorDepth;
+            </script>
+
+            <h3>pixelDepth</h3>
+            <p id = "pd"></p>
+            <script>
+                document.getElementById("pd").innerHTML =
+                screen.pixelDepth;
+            </script>
+        </div>
+        <div class ="geolocation">
+            <h1><strong>geolocation</strong></h1>
+            <h3>latitude and longitude</h3>
+            <p id= "lct"></p>
+            <button onclick="getLocation()">Click</button>
+            <script>
+                const x = document.getElementById("lct")
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showLocation, showError)
+                    }
+                    else {
+                        x.innerHTML = "Geolocation is not supported by this browser"
+                    }
+                }
+      
+                function showLocation(position) {
+                    x.innerHTML = position.coords.latitude + "<br>" + position.coords.longitude;
+                }
+
+                
+                function showError(error) {
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            x.innerHTML = "User denied the request for Geolocation."
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            x.innerHTML = "Location information is unavailable."
+                            break;
+                        case error.TIMEOUT:
+                            x.innerHTML = "The request to get user location timed out."
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            x.innerHTML = "An unknown error occurred."
+                            break;    
+                    }
+                }
+            </script>
+        </div>
+        <div class="home"><i class="fas fa-home"><a href="index.html"></i>Home</a></div>
+    </section>
+         
+</body>
+</html>
